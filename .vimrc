@@ -242,6 +242,9 @@ map <C-\> :NERDTreeToggle<CR>
 "imap <F3> <ESC> :NERDTreeToggle<CR>
 "map tw :NERDTreeToggle<CR>
 map tf :NERDTreeFind<CR>
+map tc :tabc<CR>
+map tp :tabp<CR>
+map tn :tabn<CR>
 
 "打开树状文件目录  
 map <C-F3> \be  
