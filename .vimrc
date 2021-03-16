@@ -3,9 +3,8 @@ set nocompatible
 let mapleader=","
 
 " Vim Basic settings
-:imap jk <Esc>
-:vnoremap g/ y/<C-R>"<CR>
-:vnoremap qq <Esc>`>a'<Esc>`<i'<Esc>
+imap jk <Esc>
+vnoremap g/ y/<C-R>"<CR>
 syntax enable
 set smartindent
 set tabstop=4
