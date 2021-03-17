@@ -3,6 +3,7 @@ set nocompatible
 let mapleader=","
 
 " Vim Basic settings
+set updatetime=100
 imap jk <Esc>
 vnoremap g/ y/<C-R>"<CR>
 syntax enable
@@ -91,6 +92,9 @@ Plug 'tpope/vim-surround'
 " auto-pairs
 Plug 'jiangmiao/auto-pairs'
 
+" git version control
+Plug 'airblade/vim-gitgutter'
+
 " Initialize plugin system
 call plug#end()
 
@@ -155,22 +159,10 @@ let g:VM_maps['Find Subword Under'] = '<C-d>'
 let g:VM_maps["Select Cursor Down"] = '<M-C-Down>'
 let g:VM_maps["Select Cursor Up"]   = '<M-C-Up>'
 
-" clang-format
-" your favorite style options                                               
-" your favorite style options
-let g:clang_format#style_options = {
-            \ "AccessModifierOffset" : -4,
-            \ "AllowShortIfStatementsOnASingleLine" : "true",
-            \ "AlwaysBreakTemplateDeclarations" : "true",
-            \ "Standard" : "C++11"}
-
-augroup ClangFormatSettings
-  " map to <Leader>cf in C++ code
-   nnoremap <buffer><C-S-m> :<C-u>ClangFormat<CR>
-   vnoremap <buffer><C-S-m> :ClangFormat<CR>
-  " if you install vim-operator-user
-   map <buffer><Leader>x <Plug>(operator-clang-format)
-augroup END
 
 " auto-pairs
 "let g:AutoPairsShortcutJump = '<C-Space>'
+
+" gitgutter
+nmap [h <Plug>(GitGutterNextHunk)
+nmap ]h <Plug>(GitGutterPrevHunk)]
