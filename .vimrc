@@ -6,6 +6,7 @@ let mapleader=","
 set updatetime=100
 imap jk <Esc>
 vnoremap g/ y/<C-R>"<CR>
+map <C-s> :w<CR>
 syntax enable
 set smartindent
 set tabstop=4
@@ -74,6 +75,7 @@ Plug 'yegappan/taglist'
 
 " colorschemes
 Plug 'sainnhe/sonokai'
+Plug 'tomasr/molokai'
 
 " Doxygen
 " Plug 'DoxygenTookit.vim'
@@ -137,6 +139,7 @@ nnoremap <Leader>gl :YcmCompleter GoToDeclaration<CR>
 nnoremap <leader>gf :YcmCompleter GoToDefinition<CR>
 nnoremap <leader>gg :YcmCompleter GoToDefinitionElseDeclaration<CR>
 let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/.ycm_extra_conf.py'
+let g:ycm_autoclose_preview_window_after_completion = 1
 
 " tags
 nnoremap gd g]
@@ -144,7 +147,7 @@ let Tlist_Close_On_Select = 1
 let Tlist_Exit_OnlyWindow = 1
 
 " colorscheme
-color sonokai
+color molokai
 set guifont=Monaco:h20
 set guioptions-=T " Removes top toolbar
 set guioptions-=r " Removes right hand scroll bar
@@ -164,5 +167,3 @@ let g:VM_maps["Select Cursor Up"]   = '<M-C-Up>'
 "let g:AutoPairsShortcutJump = '<C-Space>'
 
 " gitgutter
-nmap [h <Plug>(GitGutterNextHunk)
-nmap ]h <Plug>(GitGutterPrevHunk)]
