@@ -12,6 +12,9 @@ set smartindent
 set tabstop=4
 set shiftwidth=4
 set expandtab
+nnoremap <F2> :set invpaste paste?<CR>
+set pastetoggle=<F2>
+set showmode
 
 
 " Specify a directory for plugins
@@ -96,6 +99,7 @@ Plug 'jiangmiao/auto-pairs'
 
 " git version control
 Plug 'airblade/vim-gitgutter'
+Plug 'tpope/vim-fugitive'
 
 " Initialize plugin system
 call plug#end()
@@ -103,7 +107,7 @@ call plug#end()
 " fzf settings
 nnoremap <C-g> :Rg<Cr>
 nnoremap <silent> <C-p> :Files<CR>
-nnoremap <silent> <C-r> :BTags<CR>
+nnoremap <silent> <C-f> :BTags<CR>
 nnoremap <silent> <Leader><C-r> :Tags<CR>
 nnoremap <silent> <Leader>b :Buffers<CR>
 nnoremap <silent> <Leader>/ :BLines<CR>
@@ -113,6 +117,12 @@ nnoremap <silent> <Leader>H :Helptags<CR>
 nnoremap <silent> <Leader>hh :History<CR>
 nnoremap <silent> <Leader>h: :History:<CR>
 nnoremap <silent> <Leader>h/ :History/<CR>
+" [Buffers] Jump to the existing window if possible
+let g:fzf_buffers_jump = 1
+" [[B]Commits] Customize the options used by 'git log':
+let g:fzf_commits_log_options = '--graph --color=always --format="%C(auto)%h%d %s %C(black)%C(bold)%cr"'
+" [Tags] Command to generate tags file
+let g:fzf_tags_command = 'ctags -R --exclude=.git'"
 
 " NerdTree settings
 noremap <Leader>n :NERDTreeToggle<cr>
