@@ -11,13 +11,13 @@ wget -qO - https://raw.github.com/sunbingfeng/dot-vim/master/setup.sh | zsh -x
 
 # How to use
 
-- Generate compile flags for YCM
+- Generate compile flags for `YCM`
 
-    - Set `CMAKE_EXPORT_COMPILE_COMMANDS` to 'ON' if you are using cmake
+    - Set `CMAKE_EXPORT_COMPILE_COMMANDS` to `ON` if you are using cmake
 
-```
-cmake -DCMAKE_EXPORT_COMPILE_COMMANDS=ON ..
-```
+    ```
+    cmake -DCMAKE_EXPORT_COMPILE_COMMANDS=ON ..
+    ```
 
     - Use 3rd tool [bear](https://github.com/rizsotto/Bear) if you are using makefile
 
