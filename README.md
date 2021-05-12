@@ -1,4 +1,11 @@
-# Vimrc
-vim bundle config file
+dot-vim
+===========
 
-test using hammer icon!!
+One-stop .vim configuration tool to boost daily productivity.
+
+# How to install
+
+```shell
+wget -qO - https://raw.github.com/sunbingfeng/dot-vim/master/setup.sh | zsh -x
+```
+
