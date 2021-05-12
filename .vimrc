@@ -71,7 +71,7 @@ function! BuildYCM(info)
   endif
 endfunction
 
-Plug 'ycm-core/YouCompleteMe', {'do': function('BuildYCM') }
+Plug 'ycm-core/YouCompleteMe', {'branch': 'legacy-c++11', 'do': function('BuildYCM') }
 
 " taglist
 Plug 'yegappan/taglist'
