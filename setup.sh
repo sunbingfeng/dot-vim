@@ -4,7 +4,7 @@ echo "Please go away for a cup for coffee, it may take for a while."
 if which apt-get >/dev/null; then
 	sudo apt-get update
 	sudo add-apt-repository ppa:jonathonf/vim
-	sudo apt-get install -y vim exuberant-ctags clang-format
+	sudo apt-get install -y vim exuberant-ctags clang-format fzf
 	pip3 install pathtools
 else
 	echo "Platforms other than Ubuntu are not supported currently."
