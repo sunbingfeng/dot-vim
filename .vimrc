@@ -26,6 +26,7 @@ Plug 'preservim/nerdtree'
 
 " Clang formating
 Plug 'rhysd/vim-clang-format'
+Plug 'Chiel92/vim-autoformat'
 
 " Shorthand notation; fetches https://github.com/junegunn/vim-easy-align
 Plug 'junegunn/vim-easy-align'
@@ -96,6 +97,7 @@ Plug 'jiangmiao/auto-pairs'
 
 " git version control
 Plug 'airblade/vim-gitgutter'
+Plug 'tpope/vim-fugitive'
 
 " Initialize plugin system
 call plug#end()
@@ -103,7 +105,7 @@ call plug#end()
 " fzf settings
 nnoremap <C-g> :Rg<Cr>
 nnoremap <silent> <C-p> :Files<CR>
-nnoremap <silent> <C-r> :BTags<CR>
+nnoremap <silent> <C-f> :BTags<CR>
 nnoremap <silent> <Leader><C-r> :Tags<CR>
 nnoremap <silent> <Leader>b :Buffers<CR>
 nnoremap <silent> <Leader>/ :BLines<CR>
@@ -120,6 +122,8 @@ noremap <Leader>- :split<cr>
 noremap <Leader>\| :vsplit<cr>
 nnoremap <Leader>f :NERDTreeToggle<Enter>
 nnoremap <silent> <Leader>v :NERDTreeFind<CR>
+nnoremap <silent> <Leader>tn :tabn<CR>
+nnoremap <silent> <Leader>tp :tabn<CR>
 nmap <C-h> <C-w>h
 nmap <C-j> <C-w>j
 nmap <C-k> <C-w>k
@@ -157,8 +161,8 @@ set go-=L " Removes left hand scroll bar
 
 " multi-cursors
 let g:VM_maps = {}
-let g:VM_maps['Find Under']         = '<C-d>'
-let g:VM_maps['Find Subword Under'] = '<C-d>'
+let g:VM_maps['Find Under']         = '<C-n>'
+let g:VM_maps['Find Subword Under'] = '<C-n>'
 let g:VM_maps["Select Cursor Down"] = '<M-C-Down>'
 let g:VM_maps["Select Cursor Up"]   = '<M-C-Up>'
 
