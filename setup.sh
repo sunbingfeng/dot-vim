@@ -1,4 +1,4 @@
-#!/bin/env zsh
+#!/usr/bin/env zsh
 
 echo "Please go away for a cup for coffee, it may take for a while."
 if which apt-get >/dev/null; then
