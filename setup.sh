@@ -16,8 +16,10 @@ mv -f ~/.vim ~/.vim_old
 mv -f ~/.vimrc ~/.vimrc_old
 
 # Clone current repo and install plugins
-git clone https://github.com/sunbingfeng/dot-vim.git ~/.vim && cd ~/.vim
+git clone --recurse-submodules https://github.com/sunbingfeng/dot-vim.git ~/.vim && cd ~/.vim
 ln -s ~/.vim/.vimrc ~/.vimrc
+ln -s ~/.vim/ftplugin.vim/ftdetect ~/.vim/ftdetect
+ln -s ~/.vim/ftplugin.vim/after ~/.vim/after
 
 # Install vim-plug package manager
 curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
