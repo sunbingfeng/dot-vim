@@ -6,7 +6,7 @@ One-stop .vim configuration to boost daily productivity.
 # How to install
 
 ```shell
-sh -c "$wget -O- https://raw.github.com/sunbingfeng/dot-vim/master/setup.sh"
+wget -qO - https://raw.github.com/sunbingfeng/dot-vim/master/setup.sh | bash
 ```
 
 # How to use
