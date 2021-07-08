@@ -180,4 +180,4 @@ let g:VM_maps["Select Cursor Up"]   = '<M-C-Up>'
 " auto-pairs
 "let g:AutoPairsShortcutJump = '<C-Space>'
 
-" gitgutter
+let g:formatters_python = ['yapf']
