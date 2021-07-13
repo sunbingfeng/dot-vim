@@ -83,7 +83,7 @@ Plug 'sainnhe/sonokai'
 Plug 'tomasr/molokai'
 
 " Doxygen
-" Plug 'DoxygenTookit.vim'
+Plug 'vim-scripts/DoxygenToolkit.vim'
 
 Plug 'mg979/vim-visual-multi'
 
