@@ -87,9 +87,6 @@ Plug 'vim-scripts/DoxygenToolkit.vim'
 
 Plug 'mg979/vim-visual-multi'
 
-" markdown support
-Plug 'suan/vim-instant-markdown'
-
 " commenter
 Plug 'tpope/vim-commentary'
 
@@ -107,7 +104,7 @@ Plug 'tpope/vim-fugitive'
 call plug#end()
 
 " fzf settings
-nnoremap <C-g> :Rg<Cr>
+nnoremap <C-g> :RG<Cr>
 nnoremap <silent> <C-p> :Files<CR>
 nnoremap <silent> <C-f> :BTags<CR>
 nnoremap <silent> <Leader><C-r> :Tags<CR>
@@ -125,6 +122,16 @@ let g:fzf_buffers_jump = 1
 let g:fzf_commits_log_options = '--graph --color=always --format="%C(auto)%h%d %s %C(black)%C(bold)%cr"'
 " [Tags] Command to generate tags file
 let g:fzf_tags_command = 'ctags -R --exclude=.git'"
+
+function! RipgrepFzf(query, fullscreen)
+  let command_fmt = "rg --ignore-file '/home/bot/.config/rg/.ignore' --column --line-number --no-heading --color=always --smart-case -- %s || true"
+  let initial_command = printf(command_fmt, shellescape(a:query))
+  let reload_command = printf(command_fmt, '{q}')
+  let spec = {'options': ['--phony', '--query', a:query, '--bind', 'change:reload:'.reload_command]}
+  call fzf#vim#grep(initial_command, 1, fzf#vim#with_preview(spec), a:fullscreen)
+endfunction
+
+command! -nargs=* -bang RG call RipgrepFzf(<q-args>, <bang>0)
 
 " NerdTree settings
 noremap <Leader>n :NERDTreeToggle<cr>
@@ -181,3 +188,5 @@ let g:VM_maps["Select Cursor Up"]   = '<M-C-Up>'
 "let g:AutoPairsShortcutJump = '<C-Space>'
 
 let g:formatters_python = ['yapf']
+
+" Doxygen configs
