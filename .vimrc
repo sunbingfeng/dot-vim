@@ -156,6 +156,7 @@ let g:bookmark_save_per_working_dir = 1
 let g:bookmark_auto_save = 1
 
 " YCM settings
+set encoding=utf-8
 nnoremap <Leader>gl :YcmCompleter GoToDeclaration<CR>
 nnoremap <leader>gf :YcmCompleter GoToDefinition<CR>
 nnoremap <leader>gg :YcmCompleter GoToDefinitionElseDeclaration<CR>
