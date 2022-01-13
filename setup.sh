@@ -11,6 +11,10 @@ else
 	exit
 fi
 
+# use google style as the default format style, and backup it first
+if [[ -f "$HOME"/.clang-format ]]; then mv "$HOME"/.clang-format "$HOME"/.clang-format.bak; fi
+clang-format -style=google -dump-config > $HOME/.clang-format
+
 # Save old vim configurations
 mv -f ~/.vim ~/.vim_old
 mv -f ~/.vimrc ~/.vimrc_old
