@@ -2,9 +2,13 @@ set nocompatible
 
 let mapleader=","
 
+" helper function to edit and source vimrc
+nnoremap <leader>ev :vsplit $MYVIMRC<cr>
+nnoremap <leader>sv :source $MYVIMRC<cr>
+
 " Vim Basic settings
 set updatetime=100
-imap jk <Esc>
+inoremap jk <Esc>
 vnoremap g/ y/<C-R>"<CR>
 map <C-s> :w<CR>
 syntax enable
@@ -16,6 +20,7 @@ nnoremap <F2> :set invpaste paste?<CR>
 set pastetoggle=<F2>
 set showmode
 set nonumber
+set hlsearch incsearch
 
 
 " Specify a directory for plugins
