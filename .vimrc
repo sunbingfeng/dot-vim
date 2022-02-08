@@ -1,12 +1,13 @@
-set nocompatible
-
+" Set custom map leader ----------------------{{{
 let mapleader=","
+" }}}
 
+" Vim Basic settings ----------------------------{{{
 " helper function to edit and source vimrc
 nnoremap <leader>ev :vsplit $MYVIMRC<cr>
 nnoremap <leader>sv :source $MYVIMRC<cr>
 
-" Vim Basic settings
+set nocompatible
 set updatetime=100
 inoremap jk <Esc>
 vnoremap g/ y/<C-R>"<CR>
@@ -21,14 +22,17 @@ set pastetoggle=<F2>
 set showmode
 set nonumber
 set hlsearch incsearch
+" }}}
 
+" Vimscript file folding settings ---------------------- {{{
+augroup filetype_vim
+    autocmd!
+    autocmd FileType vim setlocal foldmethod=marker
+augroup END
+" }}}
 
-" Specify a directory for plugins
-" - For Neovim: stdpath('data') . '/plugged'
-" - Avoid using standard Vim directory names like 'plugin'
+" Specify all plugins -----------------{{{
 call plug#begin('~/.vim/plugged')
-
-" Make sure you use single quotes
 
 " Nerdtree
 Plug 'preservim/nerdtree'
@@ -107,8 +111,9 @@ Plug 'tpope/vim-fugitive'
 
 " Initialize plugin system
 call plug#end()
+""" }}}
 
-" fzf settings
+" fzf settings --------------------- {{{
 nnoremap <C-g> :RG<Cr>
 nnoremap <silent> <C-p> :Files<CR>
 nnoremap <silent> <C-f> :BTags<CR>
@@ -138,12 +143,23 @@ endfunction
 
 command! -nargs=* -bang RG call RipgrepFzf(<q-args>, <bang>0)
 
-" NerdTree settings
+" Open files in horizontal split
+nnoremap <silent> <Leader>s :call fzf#run({
+\   'down': '40%',
+\   'sink': 'botright split' })<CR>
+
+" Open files in vertical split
+nnoremap <silent> <Leader>v :call fzf#run({
+\   'right': winwidth('.') / 2,
+\   'sink':  'vertical botright split' })<CR>
+" }}}
+
+
+" NerdTree settings --{{{
 noremap <Leader>n :NERDTreeToggle<cr>
 noremap <Leader>- :split<cr>
 noremap <Leader>\| :vsplit<cr>
-nnoremap <Leader>f :NERDTreeToggle<Enter>
-nnoremap <silent> <Leader>v :NERDTreeFind<CR>
+nnoremap <silent> <Leader>f :NERDTreeFind<CR>
 nnoremap <silent> <Leader>tn :tabn<CR>
 nnoremap <silent> <Leader>tp :tabn<CR>
 nmap <C-h> <C-w>h
@@ -155,44 +171,43 @@ let NERDTreeQuitOnOpen = 1
 " Exit Vim if NERDTree is the only window left.
 autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() |
     \ quit | endif
+" }}}
 
-" Bookmarks settings
+" Bookmarks settings ----------------------{{{
 let g:bookmark_save_per_working_dir = 1
 let g:bookmark_auto_save = 1
+" }}}
 
-" YCM settings
+" YCM settings ---------------{{{
 set encoding=utf-8
 nnoremap <Leader>gl :YcmCompleter GoToDeclaration<CR>
 nnoremap <leader>gf :YcmCompleter GoToDefinition<CR>
 nnoremap <leader>gg :YcmCompleter GoToDefinitionElseDeclaration<CR>
 let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/.ycm_extra_conf.py'
 let g:ycm_autoclose_preview_window_after_completion = 1
+" }}}
 
-" tags
+" tags{{{
 nnoremap gd g]
 let Tlist_Close_On_Select = 1
-let Tlist_Exit_OnlyWindow = 1
+let Tlist_Exit_OnlyWindow = 1"}}}
 
-" colorscheme
-color molokai
+" colorscheme --------------------{{{
 set guifont=Monaco:h20
 set guioptions-=T " Removes top toolbar
 set guioptions-=r " Removes right hand scroll bar
 set go-=L " Removes left hand scroll bar
-" autocmd User Rails let b:surround_{char2nr('-')} = "<% \r %>" " displays <% %> correctly
-:set cpoptions+=$ " puts a $ marker for the end of words/lines in cw/c$ commands
+set cpoptions+=$ " puts a $ marker for the end of words/lines in cw/c$ commands
+" }}}
 
-" multi-cursors
+" multi-cursors ---------{{{
 let g:VM_maps = {}
 let g:VM_maps['Find Under']         = '<C-n>'
 let g:VM_maps['Find Subword Under'] = '<C-n>'
 let g:VM_maps["Select Cursor Down"] = '<M-C-Down>'
 let g:VM_maps["Select Cursor Up"]   = '<M-C-Up>'
+" }}}
 
-
-" auto-pairs
-"let g:AutoPairsShortcutJump = '<C-Space>'
-
+" Code Formatting -------------{{{
 let g:formatters_python = ['yapf']
-
-" Doxygen configs
+" }}}
