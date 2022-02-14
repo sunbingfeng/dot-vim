@@ -84,8 +84,9 @@ endfunction
 
 Plug 'ycm-core/YouCompleteMe', {'branch': 'legacy-c++11', 'do': function('BuildYCM') }
 
-" taglist
+" tags
 Plug 'yegappan/taglist'
+Plug 'craigemery/vim-autotag'
 
 " colorschemes
 Plug 'sainnhe/sonokai'
@@ -190,7 +191,9 @@ let g:ycm_autoclose_preview_window_after_completion = 1
 " tags{{{
 nnoremap gd g]
 let Tlist_Close_On_Select = 1
-let Tlist_Exit_OnlyWindow = 1"}}}
+let Tlist_Exit_OnlyWindow = 1
+
+"}}}
 
 " colorscheme --------------------{{{
 set guifont=Monaco:h20

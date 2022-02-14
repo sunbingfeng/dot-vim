@@ -22,3 +22,4 @@ wget -qO - https://raw.github.com/sunbingfeng/dot-vim/master/setup.sh | bash
     - Use 3rd tool [bear](https://github.com/rizsotto/Bear) if you are using makefile
 
 - Generate tags using `ctag`. Refer to [e-ctags](http://ctags.sourceforge.net/) for more details.
+  ctags tutorial: https://kulkarniamit.github.io/whatwhyhow/howto/use-vim-ctags.html
