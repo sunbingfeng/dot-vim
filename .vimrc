@@ -155,7 +155,6 @@ nnoremap <silent> <Leader>v :call fzf#run({
 \   'sink':  'vertical botright split' })<CR>
 " }}}
 
-
 " NerdTree settings --{{{
 noremap <Leader>n :NERDTreeToggle<cr>
 noremap <Leader>- :split<cr>
@@ -214,3 +213,23 @@ let g:VM_maps["Select Cursor Up"]   = '<M-C-Up>'
 " Code Formatting -------------{{{
 let g:formatters_python = ['yapf']
 " }}}
+
+" Jumps ---------------------{{{
+function! GotoJump()
+  jumps
+  let j = input("Please select your jump: ")
+  if j != ''
+    let pattern = '\v\c^\+'
+    if j =~ pattern
+      let j = substitute(j, pattern, '', 'g')
+      execute "normal " . j . "\<c-i>"
+    else
+      execute "normal " . j . "\<c-o>"
+    endif
+  endif
+endfunction
+nmap <Leader>j :call GotoJump()<CR>
+noremap <Leader>jf <c-i> 
+noremap <Leader>jb <c-o> 
+" }}}
+
