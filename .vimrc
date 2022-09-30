@@ -31,6 +31,11 @@ augroup filetype_vim
 augroup END
 " }}}
 
+" VIM Plug global configuration -------------{{{
+"
+let g:plug_url_format = 'git@github.com:%s.git'
+" }}}
+
 " Specify all plugins -----------------{{{
 call plug#begin('~/.vim/plugged')
 
@@ -39,13 +44,13 @@ Plug 'preservim/nerdtree'
 
 " Clang formating
 Plug 'rhysd/vim-clang-format'
-Plug 'Chiel92/vim-autoformat'
+Plug 'vim-autoformat/vim-autoformat'
 
 " Shorthand notation; fetches https://github.com/junegunn/vim-easy-align
 Plug 'junegunn/vim-easy-align'
 
 " Any valid git URL is allowed
-Plug 'https://github.com/junegunn/vim-github-dashboard.git'
+" Plug 'https://github.com/junegunn/vim-github-dashboard.git'
 
 " Multiple Plug commands can be written in a single line using | separators
 Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
@@ -110,12 +115,17 @@ Plug 'jiangmiao/auto-pairs'
 Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-fugitive'
 
+" markdown support
+Plug 'godlygeek/tabular'
+Plug 'preservim/vim-markdown'
+
 " Initialize plugin system
 call plug#end()
 """ }}}
 
 " fzf settings --------------------- {{{
 nnoremap <C-g> :RG<Cr>
+nnoremap <C-e> :SCW<Cr>
 nnoremap <silent> <C-p> :Files<CR>
 nnoremap <silent> <C-f> :BTags<CR>
 nnoremap <silent> <Leader><C-r> :Tags<CR>
@@ -135,7 +145,7 @@ let g:fzf_commits_log_options = '--graph --color=always --format="%C(auto)%h%d %
 let g:fzf_tags_command = 'ctags -R --exclude=.git'"
 
 function! RipgrepFzf(query, fullscreen)
-  let command_fmt = "rg --ignore-file '/home/bot/.config/rg/.ignore' --column --line-number --no-heading --color=always --smart-case -- %s || true"
+  let command_fmt = "rg --ignore-file '/home/bill/.config/rg/.ignore' --column --line-number --no-heading --color=always --smart-case -- %s || true"
   let initial_command = printf(command_fmt, shellescape(a:query))
   let reload_command = printf(command_fmt, '{q}')
   let spec = {'options': ['--phony', '--query', a:query, '--bind', 'change:reload:'.reload_command]}
@@ -143,6 +153,7 @@ function! RipgrepFzf(query, fullscreen)
 endfunction
 
 command! -nargs=* -bang RG call RipgrepFzf(<q-args>, <bang>0)
+command! -nargs=* -bang SCW call RipgrepFzf(expand('<cword>'), <bang>0)
 
 " Open files in horizontal split
 nnoremap <silent> <Leader>s :call fzf#run({
@@ -192,6 +203,9 @@ nnoremap gd g]
 let Tlist_Close_On_Select = 1
 let Tlist_Exit_OnlyWindow = 1
 
+let g:autotagCtagsCmd = "ctags --exclude='*.txt'"
+let g:autotagExcludeSuffixes = "txt,lua,md,py"
+
 "}}}
 
 " colorscheme --------------------{{{
@@ -208,10 +222,12 @@ let g:VM_maps['Find Under']         = '<C-n>'
 let g:VM_maps['Find Subword Under'] = '<C-n>'
 let g:VM_maps["Select Cursor Down"] = '<M-C-Down>'
 let g:VM_maps["Select Cursor Up"]   = '<M-C-Up>'
+autocmd BufWrite * try | call vm#reset() | catch | endtry
 " }}}
 
 " Code Formatting -------------{{{
 let g:formatters_python = ['yapf']
+let g:formatterpath = ['/home/bill/.local/bin']
 " }}}
 
 " Jumps ---------------------{{{
@@ -233,3 +249,7 @@ noremap <Leader>jf <c-i>
 noremap <Leader>jb <c-o> 
 " }}}
 
+" Others----------------------{{{
+nmap <F3> i<C-R>=strftime("%Y-%m-%d %a %I:%M %p")<CR><Esc>
+imap <F3> <C-R>=strftime("%Y-%m-%d %a %I:%M %p")<CR>
+"}}}
