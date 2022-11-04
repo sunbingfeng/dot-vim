@@ -222,6 +222,11 @@ let g:VM_maps['Find Under']         = '<C-n>'
 let g:VM_maps['Find Subword Under'] = '<C-n>'
 let g:VM_maps["Select Cursor Down"] = '<M-C-Down>'
 let g:VM_maps["Select Cursor Up"]   = '<M-C-Up>'
+" select all occurences in of that selection
+nmap <C-a> <Plug>(VM-Select-All)
+imap <C-a> <ESC><Plug>(VM-Select-All)
+vmap <C-a> <ESC><Plug>(VM-Select-All)
+
 autocmd BufWrite * try | call vm#reset() | catch | endtry
 " }}}
 
