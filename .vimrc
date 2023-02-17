@@ -22,6 +22,8 @@ set pastetoggle=<F2>
 set showmode
 set nonumber
 set hlsearch incsearch
+
+nnoremap <leader>cc :let @/=''<CR>
 " }}}
 
 " Vimscript file folding settings ---------------------- {{{
