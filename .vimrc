@@ -121,7 +121,13 @@ Plug 'tpope/vim-fugitive'
 Plug 'godlygeek/tabular'
 "Plug 'preservim/vim-markdown'
 
+" c/cpp source/header switch
+Plug 'kuznetsss/shswitch'
+
 Plug 'easymotion/vim-easymotion'
+
+Plug 'nanotee/zoxide.vim'
+
 " Initialize plugin system
 call plug#end()
 """ }}}
@@ -171,6 +177,7 @@ nnoremap <silent> <Leader>v :call fzf#run({
 " Git shortcuts --{{{
 nnoremap <silent> <Leader>gc :Commits<CR>
 nnoremap <silent> <Leader>gb :Git blame<CR>
+nnoremap <silent> <Leader>gs :GFiles?<CR>
 " }}}
  
 " NerdTree settings --{{{
@@ -260,6 +267,10 @@ endfunction
 nmap <Leader>j :call GotoJump()<CR>
 noremap <Leader>jf <c-i> 
 noremap <Leader>jb <c-o> 
+
+" Quick navigate between different projects.
+" It depends on the 'zoxide.vim' package
+nnoremap <silent> <Leader>w :Zi<CR>
 " }}}
 
 " Others----------------------{{{
